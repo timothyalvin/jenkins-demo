@@ -10,7 +10,7 @@
       app.kubernetes.io/instance: helloworld
     name: helloworld
   spec:
-    replicas: 1
+    replicos: 1
     selector:
       matchLabels:
         deployment: helloworld
