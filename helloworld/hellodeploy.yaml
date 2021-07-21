@@ -1,0 +1,33 @@
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    labels:
+      app: helloworld
+      app.kubernetes.io/component: helloworld
+      app.kubernetes.io/instance: helloworld
+    name: helloworld
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        deployment: helloworld
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          deployment: helloworld
+      spec:
+        containers:
+        - image: quay.io/redhattraining/versioned-hello:v1.1
+          name: helloworld
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+  status: {}
