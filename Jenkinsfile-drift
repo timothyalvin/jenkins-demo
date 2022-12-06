@@ -1,0 +1,27 @@
+pipeline {
+  agent {
+    node {
+      label 'nodejs'
+    }
+  }
+  triggers {
+    cron ('H/3 * * * *')
+  }
+  options {
+    disableConcurrentBuilds()
+  }
+  stages {
+    stage ('check drift') {
+      steps {
+        sh 'oc diff -k operatorhub_config'
+      }
+    }
+  }
+  post {
+    failure {
+      build job: 'apply/main'
+    }
+  }
+}
+
+
