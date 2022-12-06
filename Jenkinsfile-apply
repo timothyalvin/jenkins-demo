@@ -21,7 +21,6 @@ pipeline {
         branch 'main'
       }
       steps {
-        sh 'oc project demo'
         sh 'oc apply -k operatorhub_config'
       }
     }
