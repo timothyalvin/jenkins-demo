@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello
+  name: hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: hello
+  template:
+    metadata:
+      labels:
+        deployment: hello
+    spec:
+      containers:
+      - image: quay.io/redhattraining/versioned-hello:v1.0
+        name: hello
+        ports:
+        - containerPort: 8080
+          protocol: TCP
