@@ -8,4 +8,4 @@ metadata:
     release.openshift.io/create-only: "true"
   name: cluster
 spec:
-  disableAllDefaultSources: true
+  disableAllDefaultSources: false
