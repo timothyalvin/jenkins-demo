@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: hello
+  name: hello
+spec:
+  host: hello-demo.apps.ocp4.example.com
+  port:
+    targetPort: 8080-tcp
+  to:
+    kind: Service
+    name: hello
