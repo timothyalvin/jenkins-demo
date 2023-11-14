@@ -10,8 +10,7 @@ pipeline {
   stages {
     stage ('check drift') {
       steps {
-	sh 'oc project demo'
-	sh 'oc diff -k helloworld'
+	sh 'oc diff -k operatorhub_config'
       }
     }
   }

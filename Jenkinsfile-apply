@@ -13,8 +13,7 @@ pipeline {
   stages {
     stage ('Validate configuration resources') {
       steps {
-	sh 'oc project demo'
-	sh 'oc apply --dry-run --validate -k helloworld'
+	sh 'oc apply --dry-run --validate -k operatorhub_config'
       }
     }
     stage ('Apply resources') {
@@ -22,8 +21,7 @@ pipeline {
 	branch 'main'
       }
       steps {
-	sh 'oc project demo'
-	sh 'oc apply -k helloworld'
+	sh 'oc apply -k operatorhub_config'
       }
     }
   }
