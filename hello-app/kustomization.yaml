@@ -7,4 +7,4 @@ resources:
   - helloroute.yaml
 images:
   - name: quay.io/redhattraining/versioned-hello:v1.0
-    newTag: v1.1
+    newTag: v1.0
