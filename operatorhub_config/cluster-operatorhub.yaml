@@ -9,4 +9,4 @@ metadata:
     arbitary.annationation: "asdf"
   name: cluster
 spec:
-  disableAllDefaultSources: true
+  disableAllDefaultSources: false
