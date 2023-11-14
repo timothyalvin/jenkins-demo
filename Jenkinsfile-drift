@@ -1,0 +1,23 @@
+pipeline {
+  agent {
+    node {
+      label 'nodejs'
+    }
+  }
+  triggers {
+    cron ('H/3 * * * *')
+  }
+  stages {
+    stage ('check drift') {
+      steps {
+	sh 'oc project demo'
+	sh 'oc diff -k helloworld'
+      }
+    }
+  }
+  post {
+    failure {
+      build job: 'apply/main'
+    }
+  }
+}

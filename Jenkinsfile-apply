@@ -1,0 +1,30 @@
+pipeline {
+  agent {
+    node {
+      label 'nodejs'
+    }
+  }
+  triggers {
+    pollSCM ('H/3 * * * *')
+  }
+  options {
+    disableConcurrentBuilds()
+  }
+  stages {
+    stage ('Validate configuration resources') {
+      steps {
+	sh 'oc project demo'
+	sh 'oc apply --dry-run --validate -k helloworld'
+      }
+    }
+    stage ('Apply resources') {
+      when {
+	branch 'main'
+      }
+      steps {
+	sh 'oc project demo'
+	sh 'oc apply -k helloworld'
+      }
+    }
+  }
+}
